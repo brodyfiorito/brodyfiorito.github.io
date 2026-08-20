@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brody Fiorito | Electrical Engineering</title>
+<meta name="description" content="Brody Fiorito — Electrical Engineering student at the University of Pittsburgh. PCB design, embedded firmware, and Formula SAE Electric telemetry systems.">
+<meta property="og:title" content="Brody Fiorito | Electrical Engineering">
+<meta property="og:description" content="PCB design, embedded firmware, and Formula SAE Electric telemetry systems.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a231d;
+  --bg2:#0f3229;
+  --bg3:#123b30;
+  --bg4:#164539;
+  --copper:#c17f3e;
+  --copper-bright:#e6a565;
+  --copper-dim:rgba(193,127,62,0.16);
+  --silk:#eef1ea;
+  --silk-dim:#a9c2b6;
+  --silk-faint:#6f8a7e;
+  --line:#1d5443;
+  --line-bright:#2a7a61;
+  --radius:5px;
+  --radius-lg:8px;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+  --display:'Space Grotesk',system-ui,sans-serif;
+  --body:'Inter',system-ui,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--body);
+  background:var(--bg);
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(238,241,234,0.035) 1px, transparent 0);
+  background-size:28px 28px;
+  color:var(--silk);
+  line-height:1.7;
+  min-height:100vh;
+}
+a{color:var(--copper-bright);text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible,button:focus-visible{outline:2px solid var(--copper-bright);outline-offset:3px;border-radius:2px}
+
+/* ---------- Nav ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,35,29,0.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:58px}
+.nav-name{font-family:var(--mono);font-size:14px;font-weight:500;color:var(--silk);letter-spacing:0.02em}
+.nav-name .blink{color:var(--copper-bright)}
+.nav-links{display:flex;gap:1.75rem}
+.nav-links a{font-family:var(--mono);font-size:12px;letter-spacing:0.04em;text-transform:uppercase;color:var(--silk-dim);transition:color 0.2s}
+.nav-links a:hover,.nav-links a.active{color:var(--copper-bright);text-decoration:none}
+
+/* ---------- Layout ---------- */
+section{padding:110px 2rem 70px;max-width:900px;margin:0 auto}
+section:first-of-type{padding-top:120px;min-height:92vh;display:flex;align-items:center}
+
+.designator{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;letter-spacing:0.08em;color:var(--copper-bright);margin-bottom:0.9rem}
+.designator .pad{width:12px;height:12px;background:var(--copper);border-radius:1px;position:relative;flex-shrink:0}
+.designator .pad::before,.designator .pad::after{content:'';position:absolute;background:var(--copper);width:4px;height:2px}
+.designator .pad::before{left:-4px;top:5px}
+.designator .pad::after{right:-4px;top:5px}
+
+h1{font-family:var(--display);font-size:clamp(2.1rem,5vw,3.2rem);font-weight:700;line-height:1.12;letter-spacing:-0.02em;color:var(--silk);margin-bottom:0.7rem}
+h1 .accent{color:var(--copper-bright)}
+h2{font-family:var(--display);font-size:clamp(1.5rem,3vw,1.9rem);font-weight:600;letter-spacing:-0.01em;margin-bottom:1.4rem}
+.hero-sub{font-size:1.05rem;color:var(--silk-dim);max-width:520px;margin-bottom:1.8rem}
+.hero-badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:2.2rem}
+.badge{font-family:var(--mono);font-size:11px;padding:5px 10px;border-radius:3px;border:1px solid var(--line);color:var(--silk-dim);background:var(--bg2)}
+.btn-row{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:11px 20px;border-radius:var(--radius);font-family:var(--mono);font-size:13px;font-weight:500;cursor:pointer;transition:all 0.15s;border:1px solid transparent}
+.btn-primary{background:var(--copper);color:#0a231d}
+.btn-primary:hover{background:var(--copper-bright);text-decoration:none}
+.btn-ghost{background:transparent;color:var(--silk);border-color:var(--line)}
+.btn-ghost:hover{background:var(--bg2);text-decoration:none;border-color:var(--line-bright)}
+
+/* ---------- Hero schematic graphic ---------- */
+.hero-wrap{display:flex;align-items:center;gap:3rem;width:100%}
+.headshot{flex-shrink:0;width:180px;height:180px;border-radius:6px;object-fit:cover;border:1px solid var(--line);display:block}
+.headshot-placeholder{flex-shrink:0;width:180px;height:180px;border-radius:6px;border:1px dashed var(--line-bright);background:var(--bg2);display:none;align-items:center;justify-content:center;text-align:center;padding:1rem}
+@media(min-width:760px){.headshot-placeholder{display:flex}}
+.headshot-placeholder p{font-family:var(--mono);font-size:11px;color:var(--silk-faint);line-height:1.6}
+
+.proj-photo{width:100%;aspect-ratio:16/10;border-radius:var(--radius);object-fit:cover;margin-bottom:1rem;border:1px solid var(--line);display:block}
+.proj-photo-placeholder{width:100%;aspect-ratio:16/10;border-radius:var(--radius);border:1px dashed var(--line-bright);background:var(--bg3);display:flex;align-items:center;justify-content:center;text-align:center;margin-bottom:1rem;padding:0.5rem}
+.proj-photo-placeholder p{font-family:var(--mono);font-size:10.5px;color:var(--silk-faint);line-height:1.6}
+
+/* ---------- About ---------- */
+.about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:2.2rem;align-items:start}
+.about-text p{color:var(--silk-dim);margin-bottom:1rem;font-size:0.95rem}
+.info-card{background:var(--bg2);border:1px solid var(--line);border-radius:var(--radius-lg);padding:1.1rem}
+.info-row{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:13px}
+.info-row:last-child{border-bottom:none}
+.info-label{font-family:var(--mono);color:var(--silk-faint);font-size:11px;text-transform:uppercase;letter-spacing:0.05em}
+.info-val{color:var(--silk);font-weight:500;text-align:right}
+
+.skill-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin-top:2rem}
+.skill-cat{background:var(--bg2);border:1px solid var(--line);border-radius:var(--radius);padding:1rem}
+.skill-cat-title{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--copper-bright);margin-bottom:0.7rem}
+.skill-tags{display:flex;flex-wrap:wrap;gap:5px}
+.skill-tag{font-family:var(--mono);font-size:11px;padding:3px 7px;border-radius:3px;background:var(--bg3);color:var(--silk-dim);border:1px solid var(--line)}
+
+.timeline{position:relative;padding-left:1.4rem;margin-top:2rem}
+.timeline::before{content:'';position:absolute;left:0;top:6px;bottom:6px;width:1px;background:var(--line-bright)}
+.tl-item{position:relative;margin-bottom:1.8rem}
+.tl-item::before{content:'';position:absolute;left:-1.5rem;top:6px;width:8px;height:8px;background:var(--copper);border:2px solid var(--bg)}
+.tl-date{font-family:var(--mono);font-size:11px;color:var(--silk-faint);letter-spacing:0.04em;text-transform:uppercase;margin-bottom:3px}
+.tl-title{font-size:15px;font-weight:600;color:var(--silk);margin-bottom:1px}
+.tl-org{font-size:13px;color:var(--copper-bright);margin-bottom:6px}
+.tl-feats{list-style:none;margin-bottom:8px}
+.tl-feats li{font-size:13px;color:var(--silk-dim);padding:3px 0;padding-left:14px;position:relative}
+.tl-feats li::before{content:'—';position:absolute;left:0;color:var(--copper)}
+.tl-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+.tl-tag{font-family:var(--mono);font-size:10px;padding:2px 7px;border-radius:3px;background:var(--bg3);color:var(--silk-faint);border:1px solid var(--line)}
+
+/* ---------- Projects ---------- */
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(370px,1fr));gap:1.1rem;margin-top:0.5rem}
+.proj-card{background:var(--bg2);border:1px solid var(--line);border-radius:var(--radius-lg);padding:1.4rem;position:relative;transition:border-color 0.2s,transform 0.15s}
+.proj-card:hover{border-color:var(--line-bright);transform:translateY(-2px)}
+.proj-ref{font-family:var(--mono);font-size:11px;color:var(--copper-bright);letter-spacing:0.05em;margin-bottom:0.6rem;display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 10px}
+.proj-status{color:var(--silk-faint)}
+.proj-title{font-family:var(--display);font-size:16px;font-weight:600;color:var(--silk);margin-bottom:3px}
+.proj-sub{font-family:var(--mono);font-size:11px;color:var(--silk-faint);margin-bottom:0.8rem;text-transform:uppercase;letter-spacing:0.04em}
+.proj-desc{font-size:13.5px;color:var(--silk-dim);line-height:1.65;margin-bottom:1rem}
+.proj-feats{list-style:none;margin-bottom:1rem}
+.proj-feats li{font-size:12.5px;color:var(--silk-dim);padding:3px 0;padding-left:14px;position:relative}
+.proj-feats li::before{content:'—';position:absolute;left:0;color:var(--copper)}
+.proj-tech{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:1.1rem}
+.tech-tag{font-family:var(--mono);font-size:10.5px;padding:2px 7px;border-radius:3px;border:1px solid var(--line);color:var(--silk-faint);background:var(--bg3)}
+.proj-link{font-family:var(--mono);font-size:12px;font-weight:500;color:var(--copper-bright)}
+
+/* ---------- Contact ---------- */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;margin-top:1.2rem}
+.contact-card{background:var(--bg2);border:1px solid var(--line);border-radius:var(--radius-lg);padding:1.1rem 1.25rem;display:flex;flex-direction:column;gap:2px;transition:border-color 0.2s}
+.contact-card:hover{border-color:var(--copper);text-decoration:none}
+.contact-label{font-family:var(--mono);font-size:10px;color:var(--silk-faint);text-transform:uppercase;letter-spacing:0.06em}
+.contact-val{font-size:14px;font-weight:500;color:var(--silk)}
+footer{text-align:center;padding:2.5rem;color:var(--silk-faint);font-family:var(--mono);font-size:11px;border-top:1px solid var(--line)}
+
+@media(max-width:640px){
+  .about-grid,.contact-grid{grid-template-columns:1fr}
+  .proj-grid{grid-template-columns:1fr}
+  nav{padding:0 1.1rem}
+  .nav-links{gap:1.1rem}
+  section{padding-left:1.25rem;padding-right:1.25rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-name">brody<span class="blink">_</span>fiorito</span>
+  <div class="nav-links">
+    <a href="#home" class="active" onclick="setActive(this)">Home</a>
+    <a href="#about" onclick="setActive(this)">About</a>
+    <a href="#projects" onclick="setActive(this)">Projects</a>
+    <a href="#contact" onclick="setActive(this)">Contact</a>
+  </div>
+</nav>
+
+<!-- HOME -->
+<section id="home">
+  <div class="hero-wrap">
+    <div style="flex:1;min-width:0">
+      <div class="designator"><span class="pad"></span> BF&#8209;01 &middot; TITLE BLOCK</div>
+      <h1>Hi, I'm <span class="accent">Brody Fiorito</span>.</h1>
+      <p class="hero-sub">Electrical Engineering student at the University of Pittsburgh, learning PCB design and embedded firmware through Formula SAE Electric and my own projects.</p>
+      <div class="hero-badges">
+        <span class="badge">PCB DESIGN</span>
+        <span class="badge">EMBEDDED FIRMWARE</span>
+        <span class="badge">CAN</span>
+        <span class="badge">RF</span>
+        <span class="badge">ROS 2</span>
+      </div>
+      <div class="btn-row">
+        <a href="#projects" class="btn btn-primary">View Projects</a>
+        <a href="#about" class="btn btn-ghost">About Me</a>
+      </div>
+    </div>
+      <img src="headshot.jpg" alt="Brody Fiorito" class="headshot">
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <img src="carhero.jpg" alt="sitting on car" style="width:100%;max-height:480px;object-fit:cover;border-radius:var(--radius-lg);border:1px solid var(--line);margin-bottom:2rem;display:block">
+  <div class="designator"><span class="pad"></span> U1 &middot; CONFIG</div>
+  <h2>Background & Experience</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm the Autonomous Subteam Lead on Pitt's Formula SAE electric racing team (Panther Racing), where I previously served as Low Voltage Engineer. My work spans from full custom PCB design in Altium to CAN bus architecture on a student-built EV.</p>
+      <p>I'm interested in hardware and software design, including projects where the firmware has to account for real physics: signal integrity, power budgets, timing constraints, and sensor noise.</p>
+      <p>I maintain my own Linux server to host my own services.</p>
+      <p>Outside of engineering, I enjoy sitting in the rain and reading, or cooking and baking for my family and friends.</p>
+    </div>
+    <div>
+      <div class="info-card">
+        <div class="info-row"><span class="info-label">School</span><span class="info-val">University of Pittsburgh</span></div>
+        <div class="info-row"><span class="info-label">Degree</span><span class="info-val">B.S. Electrical Engineering, '29</span></div>
+        <div class="info-row"><span class="info-label">GPA</span><span class="info-val">3.90 / 4.00</span></div>
+        <div class="info-row"><span class="info-label">Team</span><span class="info-val">Panther Racing — Autonomous Lead</span></div>
+        <div class="info-row"><span class="info-label">Location</span><span class="info-val">Pittsburgh, PA</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="skill-grid">
+    <div class="skill-cat">
+      <div class="skill-cat-title">Programming & Scripting</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Embedded C</span>
+        <span class="skill-tag">C++</span>
+        <span class="skill-tag">MATLAB</span>
+        <span class="skill-tag">VHDL</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">Assembly</span>
+      </div>
+    </div>
+    <div class="skill-cat">
+      <div class="skill-cat-title">Software & Tools</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Altium Designer</span>
+        <span class="skill-tag">ROS 2 (Humble)</span>
+        <span class="skill-tag">Docker</span>
+        <span class="skill-tag">Linux</span>
+        <span class="skill-tag">Git</span>
+        <span class="skill-tag">RapidHarness</span>
+        <span class="skill-tag">LTspice</span>
+      </div>
+    </div>
+    <div class="skill-cat">
+      <div class="skill-cat-title">Hardware & Embedded Platforms</div>
+      <div class="skill-tags">
+        <span class="skill-tag">ESP32 (ESP-IDF, FreeRTOS)</span>
+        <span class="skill-tag">STM32 (HAL, CubeMX)</span>
+        <span class="skill-tag">CAN Bus (pCAN, MoTeC M1)</span>
+        <span class="skill-tag">SPI</span>
+        <span class="skill-tag">I2C</span>
+        <span class="skill-tag">I2S</span>
+        <span class="skill-tag">UART</span>
+        <span class="skill-tag">ADC</span>
+        <span class="skill-tag">USB</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-date">Jul 2026 — Present</div>
+      <div class="tl-title">Autonomous Subteam Lead</div>
+      <div class="tl-org">Panther Racing — Formula SAE Electric, University of Pittsburgh</div>
+      <ul class="tl-feats">
+        <li>Building the perception and control stack in C++/ROS 2 Humble — 14 nodes including a VLP-16 lidar cone detector, CAN bridge, and watchdog/state machine — deployed to Jetson via containerized builds</li>
+        <li>Relaunched a subteam that had been dormant for two years and manage a $6,000 driverless hardware budget</li>
+      </ul>
+      <div class="tl-tags"><span class="tl-tag">ROS 2</span><span class="tl-tag">Jetson</span><span class="tl-tag">Lidar</span><span class="tl-tag">Docker</span></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">Aug 2025 — Jul 2026</div>
+      <div class="tl-title">Low Voltage Engineer</div>
+      <div class="tl-org">Panther Racing — Formula SAE Electric, University of Pittsburgh</div>
+      <ul class="tl-feats">
+        <li>Designed a CAN expansion board (STM32C092, TCAN3404-Q1, TPS542025) and wrote HAL firmware converting 8 analog and 2 digital sensor inputs to scheduled CAN frames</li>
+        <li>Designed the PR-037 dashboard wiring harness in RapidHarness across 12 connectors, routing CAN, shutdown circuit, power, and signal lines with pinout and build documentation</li>
+      </ul>
+      <div class="tl-tags"><span class="tl-tag">CAN Bus</span><span class="tl-tag">RapidHarness</span><span class="tl-tag">STM32</span></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">Aug 2026 — Dec 2026</div>
+      <div class="tl-title">Teaching Assistant</div>
+      <div class="tl-org">ENGR 0711 — Introduction to Engineering Analysis, University of Pittsburgh</div>
+      <ul class="tl-feats">
+        <li>Support 60 students in C and MATLAB across weekly lab sections and office hours; grade assignments and provide written feedback on code</li>
+      </ul>
+      <div class="tl-tags"><span class="tl-tag">C</span><span class="tl-tag">MATLAB</span><span class="tl-tag">Teaching</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="designator"><span class="pad"></span> U2&ndash;U3 &middot; BUILDS</div>
+  <h2>Things I've Built</h2>
+  <div class="proj-grid">
+
+    <div class="proj-card">
+      <div class="proj-ref">LITEL-01 <span class="proj-status">IN PROGRESS &middot; JUL 2026&ndash;PRESENT</span></div>
+           <img src="litel-board.jpg" alt="LiTel board" class="proj-photo">
+      <div class="proj-title">LiTel — Vehicle Telemetry Link</div>
+      <div class="proj-sub">Custom PCB · Embedded Firmware · RF · Panther Racing</div>
+      <p class="proj-desc">A 4-layer mixed-signal PCB around an STM32H533 that ingests classic CAN at 1 Mbit/s and relays frames over a 900 MHz RFD900ux link to a pit-side ground station.</p>
+      <ul class="proj-feats">
+        <li>Wide-Vin automotive front end (TVS / fuse / P-FET protection, TPS54360-Q1 buck) operating directly off the vehicle LV bus</li>
+        <li>Interrupt-driven CAN RX with full-FIFO drain, ring buffer, and CRC-checked COBS framing</li>
+        <li>Targeting a sub-200 ms end-to-end latency budget — 5x tighter than the previous system</li>
+      </ul>
+      <div class="proj-tech">
+        <span class="tech-tag">STM32H533</span>
+        <span class="tech-tag">RFD900ux</span>
+        <span class="tech-tag">Altium</span>
+        <span class="tech-tag">Embedded C</span>
+      </div>
+      <a href="https://github.com/brodyfiorito/panther-racing-litel" class="proj-link">View on GitHub &rarr;</a>
+      <a href="#" class="proj-link">View on GitHub &rarr;</a>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-ref">CANX-01 <span class="proj-status">COMPLETE &middot; JAN 2026</span></div>
+      <img src="can-expansion-board.jpg" alt="CAN expansion board" class="proj-photo">
+      <div class="proj-title">Miniature CAN Expansion Board</div>
+      <div class="proj-sub">Custom PCB · Signal Conditioning · Panther Racing</div>
+      <p class="proj-desc">A CAN expansion board built while serving as Low Voltage Engineer, converting sensor inputs into scheduled CAN frames for the car's network.</p>
+      <ul class="proj-feats">
+        <li>STM32C092 with a TCAN3404-Q1 transceiver and TPS542025 buck converter</li>
+        <li>HAL firmware converting 8 analog and 2 digital sensor inputs into scheduled CAN frames</li>
+        <li>Analog signal conditioning (RC filters, voltage dividers, op-amp buffers) validated in LTspice</li>
+      </ul>
+      <div class="proj-tech">
+        <span class="tech-tag">STM32C092</span>
+        <span class="tech-tag">TCAN3404-Q1</span>
+        <span class="tech-tag">LTspice</span>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-ref">LISS-01 <span class="proj-status">COMPLETE &middot; MAR&ndash;MAY 2026</span></div>
+      <img src="lissajous-board.jpg" alt="Lissajous Signal Generator board" class="proj-photo">
+      <div class="proj-title">Lissajous Signal Generator</div>
+      <div class="proj-sub">Mixed-Signal PCB · Audio DSP · ESP32-S3</div>
+      <p class="proj-desc">A mixed-signal PCB generating phase- and frequency-controlled stereo sine waves, streamed over I2S to a PCM5102A DAC for Lissajous figure visualization on an oscilloscope.</p>
+      <ul class="proj-feats">
+        <li>FreeRTOS firmware with a dual-mode state machine for waveform generation and USB audio passthrough</li>
+        <li>Ring-buffered audio and ADC conditioning with hysteresis and EMA filtering</li>
+        <li>Fabricated at JLCPCB and hand-assembled — functional on first power-up; verified rails, I2S timing, and DAC output on an oscilloscope</li>
+      </ul>
+      <div class="proj-tech">
+        <span class="tech-tag">ESP32-S3</span>
+        <span class="tech-tag">ESP-IDF / FreeRTOS</span>
+        <span class="tech-tag">PCM5102A</span>
+      </div>
+      <a href="https://github.com/brodyfiorito/lissajous-box" class="proj-link">View on GitHub &rarr;</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="designator"><span class="pad"></span> J1 &middot; CONNECTOR</div>
+  <h2>Let's connect</h2>
+  <p style="color:var(--silk-dim);margin-bottom:1.5rem;font-size:0.95rem">I'm always interested in embedded systems roles and hardware projects. Reach out via any of the links below.</p>
+  <div class="contact-grid">
+    <a href="https://github.com/brodyfiorito" class="contact-card">
+      <span class="contact-label">GitHub</span>
+      <span class="contact-val">github.com/brodyfiorito</span>
+    </a>
+    <a href="https://linkedin.com/in/brodyfiorito" class="contact-card">
+      <span class="contact-label">LinkedIn</span>
+      <span class="contact-val">linkedin.com/in/brodyfiorito</span>
+    </a>
+    <a href="mailto:brodyjfiorito@gmail.com" class="contact-card">
+      <span class="contact-label">Email</span>
+      <span class="contact-val">brodyjfiorito@gmail.com</span>
+    </a>
+    <a href="Brody-Fiorito-Resume.pdf" class="contact-card">
+      <span class="contact-label">Resume</span>
+      <span class="contact-val">Download PDF</span>
+    </a>
+  </div>
+</section>
+
+<footer>Built by Brody Fiorito &middot; Electrical Engineering &middot; University of Pittsburgh</footer>
+
+<script>
+function setActive(el){
+  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
+  el.classList.add('active');
+}
+const sections=document.querySelectorAll('section[id]');
+const navLinks=document.querySelectorAll('.nav-links a');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      navLinks.forEach(a=>{
+        a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id);
+      });
+    }
+  });
+},{threshold:0.4,rootMargin:'-58px 0px 0px 0px'});
+sections.forEach(s=>obs.observe(s));
+</script>
+</body>
+</html>
