@@ -219,7 +219,7 @@ code{font-family:var(--mono);font-size:0.85em;color:var(--silk);background:var(-
   padding:clamp(1.75rem,4vw,2.75rem) 0;border-top:1px solid var(--line);
 }
 .row:last-of-type{border-bottom:1px solid var(--line)}
-.row img{width:100%;aspect-ratio:4/3;object-fit:cover;border:1px solid var(--line);display:block}
+.row img{width:100%;height:auto;border:1px solid var(--line);display:block}
 .row h3{margin:0.45rem 0 0.6rem}
 .row p{color:var(--silk-2);font-size:1rem;margin-bottom:0.5rem}
 .stack{display:flex;flex-wrap:wrap;gap:0.4rem 1.1rem;margin-top:0.9rem}
@@ -281,18 +281,10 @@ dd{font-family:var(--mono);font-size:0.8rem;color:var(--silk);text-align:right}
 footer{border-top:1px solid var(--line);padding:1.5rem 0 2.25rem}
 .foot-in{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:0 1.5rem}
 .foot-links{display:flex;gap:1.25rem;list-style:none}
-.foot-links a{display:flex;align-items:center;gap:0.5rem;min-height:44px;font-family:var(--mono);font-size:0.76rem;text-decoration:none;color:var(--silk-2)}
+.foot-links a{display:flex;align-items:center;gap:0.55rem;min-height:44px;font-family:var(--mono);font-size:0.8rem;text-decoration:none;color:var(--silk-2)}
 .foot-links a:hover{color:var(--copper-2)}
-/* brand marks pulled from simpleicons.org and masked so they take the link colour */
-.ico{
-  width:15px;height:15px;flex-shrink:0;
-  background-color:currentColor;
-  -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
-  -webkit-mask-position:center;mask-position:center;
-  -webkit-mask-size:contain;mask-size:contain;
-}
-.ico-github{-webkit-mask-image:url("https://cdn.simpleicons.org/github");mask-image:url("https://cdn.simpleicons.org/github")}
-.ico-linkedin{-webkit-mask-image:url("https://cdn.simpleicons.org/linkedin");mask-image:url("https://cdn.simpleicons.org/linkedin")}
+/* official brand marks, unmodified per GitHub and LinkedIn brand guidelines (21px min) */
+.foot-links img{height:21px;width:auto;display:block;flex-shrink:0}
 footer p{font-family:var(--mono);font-size:0.7rem;color:var(--silk-3);max-width:none}
 
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
@@ -307,7 +299,7 @@ footer p{font-family:var(--mono);font-size:0.7rem;color:var(--silk-3);max-width:
   .about-body{grid-template-columns:1fr}
   .record-grid{grid-template-columns:1fr}
   .row{grid-template-columns:1fr}
-  .row img{aspect-ratio:16/9;max-width:420px}
+  .row img{max-width:420px}
 }
 @media(max-width:520px){
   tbody th{white-space:normal}
@@ -351,7 +343,7 @@ footer p{font-family:var(--mono);font-size:0.7rem;color:var(--silk-3);max-width:
     <div class="sheet-frame">
       <div class="sheet-copy">
         <p class="field">PITTSBURGH, PA</p>
-        <h1>I'm Brody Fiorito, an electrical engineer.</h1>
+        <h1>I'm Brody Fiorito, an electrical engineering student.</h1>
         <p class="lede">I design circuit boards, write the firmware that runs on them, and lead the driverless subteam on Pitt's Formula SAE electric race car.</p>
         <div class="hero-act">
           <a class="btn" href="#work">See the driverless stack</a>
@@ -626,8 +618,8 @@ footer p{font-family:var(--mono);font-size:0.7rem;color:var(--silk-3);max-width:
 <footer>
   <div class="wrap foot-in">
     <ul class="foot-links">
-      <li><a href="https://github.com/brodyfiorito" target="_blank" rel="noopener noreferrer"><span class="ico ico-github" aria-hidden="true"></span>GitHub</a></li>
-      <li><a href="https://linkedin.com/in/brodyfiorito" target="_blank" rel="noopener noreferrer"><span class="ico ico-linkedin" aria-hidden="true"></span>LinkedIn</a></li>
+      <li><a href="https://github.com/brodyfiorito" target="_blank" rel="noopener noreferrer"><img src="github-mark-white.svg" alt="" width="21" height="21">GitHub</a></li>
+      <li><a href="https://linkedin.com/in/brodyfiorito" target="_blank" rel="noopener noreferrer"><img src="linkedin-in-white.png" alt="" width="21" height="21">LinkedIn</a></li>
     </ul>
     <p>BRODY FIORITO · ELECTRICAL ENGINEERING · UNIVERSITY OF PITTSBURGH · REV 2026.09</p>
   </div>
