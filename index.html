@@ -277,14 +277,13 @@ dd{font-family:var(--mono);font-size:0.8rem;color:var(--silk);text-align:right}
 .links a:hover{color:var(--copper-2)}
 .links .what{font-family:var(--display);font-weight:600;font-stretch:94%;font-size:1.05rem}
 .links .where{font-family:var(--mono);font-size:0.78rem;color:var(--silk-3);text-align:right}
-
-footer{border-top:1px solid var(--line);padding:1.5rem 0 2.25rem}
-.foot-in{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:0 1.5rem}
-.foot-links{display:flex;gap:1.25rem;list-style:none}
-.foot-links a{display:flex;align-items:center;gap:0.55rem;min-height:44px;font-family:var(--mono);font-size:0.8rem;text-decoration:none;color:var(--silk-2)}
-.foot-links a:hover{color:var(--copper-2)}
+.profiles{display:flex;flex-wrap:wrap;gap:0 1.9rem;list-style:none;margin-top:0.9rem}
+.profiles a{display:flex;align-items:center;gap:0.55rem;min-height:48px;font-family:var(--mono);font-size:0.8rem;text-decoration:none;color:var(--silk-2)}
+.profiles a:hover{color:var(--copper-2)}
 /* official brand marks, unmodified per GitHub and LinkedIn brand guidelines (21px min) */
-.foot-links img{height:21px;width:auto;display:block;flex-shrink:0}
+.profiles img{height:21px;width:auto;display:block;flex-shrink:0}
+
+footer{border-top:1px solid var(--line);padding:2rem 0 2.25rem}
 footer p{font-family:var(--mono);font-size:0.7rem;color:var(--silk-3);max-width:none}
 
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
@@ -306,7 +305,6 @@ footer p{font-family:var(--mono);font-size:0.7rem;color:var(--silk-3);max-width:
   tbody td:last-child{white-space:normal}
   .links a{flex-direction:column;align-items:flex-start;gap:0.1rem;padding:1rem 0}
   .links .where{text-align:left}
-  .foot-in{flex-direction:column;align-items:flex-start}
 }
 </style>
 </head>
@@ -610,17 +608,17 @@ footer p{font-family:var(--mono);font-size:0.7rem;color:var(--silk-3);max-width:
         <span class="where">PDF, one page</span>
       </a>
     </div>
+    <ul class="profiles">
+      <li><a href="https://github.com/brodyfiorito" target="_blank" rel="noopener noreferrer"><img src="github-mark-white.svg" alt="" width="21" height="21">github.com/brodyfiorito</a></li>
+      <li><a href="https://linkedin.com/in/brodyfiorito" target="_blank" rel="noopener noreferrer"><img src="linkedin-in-white.png" alt="" width="21" height="21">linkedin.com/in/brodyfiorito</a></li>
+    </ul>
   </div>
 </section>
 
 </main>
 
 <footer>
-  <div class="wrap foot-in">
-    <ul class="foot-links">
-      <li><a href="https://github.com/brodyfiorito" target="_blank" rel="noopener noreferrer"><img src="github-mark-white.svg" alt="" width="21" height="21">GitHub</a></li>
-      <li><a href="https://linkedin.com/in/brodyfiorito" target="_blank" rel="noopener noreferrer"><img src="linkedin-in-white.png" alt="" width="21" height="21">LinkedIn</a></li>
-    </ul>
+  <div class="wrap">
     <p>BRODY FIORITO · ELECTRICAL ENGINEERING · UNIVERSITY OF PITTSBURGH · REV 2026.09</p>
   </div>
 </footer>
