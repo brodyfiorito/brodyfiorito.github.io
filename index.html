@@ -3,14 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a231d">
 <title>Brody Fiorito | Electrical Engineering</title>
 <meta name="description" content="Brody Fiorito — electrical engineering student at the University of Pittsburgh. Circuit board design, embedded firmware, and the autonomy stack for Pitt's Formula SAE electric race car.">
 <meta property="og:title" content="Brody Fiorito | Electrical Engineering">
 <meta property="og:description" content="Circuit board design, embedded firmware, and Formula SAE Electric autonomy.">
 <meta property="og:type" content="website">
+<meta property="og:image" content="carhero.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..112,400..700&family=Newsreader:opsz,wght@6..72,400;6..72,500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8TX9QJZF8W"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-8TX9QJZF8W');
+</script>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -224,6 +235,7 @@ code{font-family:var(--mono);font-size:0.85em;color:var(--silk);background:var(-
 .row p{color:var(--silk-2);font-size:1rem;margin-bottom:0.5rem}
 .stack{display:flex;flex-wrap:wrap;gap:0.4rem 1.1rem;margin-top:0.9rem}
 .stack span{font-family:var(--mono);font-size:0.72rem;color:var(--silk-3)}
+.row-links{display:flex;flex-wrap:wrap;gap:0 1.75rem}
 .row-link{
   display:inline-flex;align-items:center;min-height:44px;
   font-family:var(--mono);font-size:0.8rem;
@@ -266,8 +278,6 @@ dd{font-family:var(--mono);font-size:0.8rem;color:var(--silk);text-align:right}
 .awards .when{font-family:var(--mono);font-size:0.73rem;color:var(--silk-3);white-space:nowrap;padding-top:0.22rem}
 
 /* ---- reach: two actions only ---- */
-.reach h2{margin-bottom:0}
-.reach .intro{color:var(--silk-2);margin-bottom:2rem}
 .links{border-top:1px solid var(--line-2)}
 .links a{
   display:flex;align-items:center;justify-content:space-between;gap:1rem;
@@ -309,15 +319,6 @@ footer p{font-family:var(--mono);font-size:0.7rem;color:var(--silk-3);max-width:
 </style>
 </head>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-8TX9QJZF8W"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-8TX9QJZF8W');
-</script>
-
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
@@ -355,7 +356,7 @@ footer p{font-family:var(--mono);font-size:0.7rem;color:var(--silk-3);max-width:
       <div class="tb-cell"><span class="field">DRAWN BY</span><span class="val">B. FIORITO</span></div>
       <div class="tb-cell"><span class="field">DISCIPLINE</span><span class="val">EE — BOARDS &amp; FIRMWARE</span></div>
       <div class="tb-cell"><span class="field">SCHOOL</span><span class="val">UNIV. OF PITTSBURGH '29</span></div>
-      <div class="tb-cell"><span class="field">REV</span><span class="val">2026.09</span></div>
+      <div class="tb-cell"><span class="field">REV</span><span class="val">2026.11</span></div>
     </div>
   </div>
 </header>
@@ -386,11 +387,11 @@ footer p{font-family:var(--mono);font-size:0.7rem;color:var(--silk-3);max-width:
         <tr>
           <th scope="row">Vehicle networks</th>
           <td>Classic CAN at 1&nbsp;Mbit/s on a student-built EV — frame scheduling, message definition, bus debug with pCAN and a MoTeC M1.</td>
-          <td>2 seasons</td>
+          <td>Since 2025</td>
         </tr>
         <tr>
           <th scope="row">Autonomy software</th>
-          <td>ROS 2 Humble in C++ — lidar point clouds through PCL, node lifecycle and safety state machines, containerized for reproducible builds.</td>
+          <td>ROS 2 Humble in C++ — lidar point clouds through PCL, lateral and longitudinal control, node lifecycle and safety state machines, containerized for reproducible builds.</td>
           <td>6 packages, from scratch</td>
         </tr>
         <tr>
@@ -425,7 +426,7 @@ footer p{font-family:var(--mono);font-size:0.7rem;color:var(--silk-3);max-width:
         <span class="field">SOURCE — TEAM-INTERNAL</span>
       </div>
       <h3>The driverless autonomy stack</h3>
-      <p class="feat-body">I restarted the subteam and have been building the software from an empty repository — six ROS 2 packages spanning sensor drivers to CAN actuation, containerized so the whole stack runs the same on a laptop as it will on the car's compute. Perception is the furthest along; the rest is scaffolded and coming up behind it.</p>
+      <p class="feat-body">I restarted the subteam and have been building the software from an empty repository — six ROS 2 packages spanning sensor drivers to CAN actuation, containerized so the whole stack runs the same on a laptop as it will on the car's compute. Perception and controls are implemented and tested; the rest is scaffolded and coming up behind them.</p>
 
       <figure class="figscroll">
         <img src="autonomy-flowchart.png" alt="Flowchart of the autonomy software: sensor drivers feeding perception, perception feeding state estimation and planning, planning feeding control and the CAN bridge, with the watchdog and state machine supervising.">
@@ -452,7 +453,9 @@ footer p{font-family:var(--mono);font-size:0.7rem;color:var(--silk-3);max-width:
             </ul>
           </details>
           <div class="stack"><span>STM32H533</span><span>RFD900ux</span><span>Altium</span><span>Embedded C</span></div>
-          <a class="row-link" href="https://github.com/brodyfiorito/panther-racing-litel" target="_blank" rel="noopener noreferrer">Read the source on GitHub</a>
+          <div class="row-links">
+            <a class="row-link" href="https://github.com/brodyfiorito/panther-racing-litel" target="_blank" rel="noopener noreferrer">Read the source on GitHub</a>
+          </div>
         </div>
       </article>
 
@@ -471,7 +474,12 @@ footer p{font-family:var(--mono);font-size:0.7rem;color:var(--silk-3);max-width:
             </ul>
           </details>
           <div class="stack"><span>ESP32-S3</span><span>ESP-IDF / FreeRTOS</span><span>PCM5102A</span></div>
-          <a class="row-link" href="https://github.com/brodyfiorito/lissajous-box" target="_blank" rel="noopener noreferrer">Read the build writeup on GitHub</a>
+          <div class="row-links">
+            <a class="row-link" href="https://github.com/brodyfiorito/lissajous-box" target="_blank" rel="noopener noreferrer">Read the build writeup on GitHub</a>
+            <!-- To add the element14 writeup, paste its URL here:
+            <a class="row-link" href="ELEMENT14_URL" target="_blank" rel="noopener noreferrer">Read the element14 writeup</a>
+            -->
+          </div>
         </div>
       </article>
 
@@ -484,7 +492,7 @@ footer p{font-family:var(--mono);font-size:0.7rem;color:var(--silk-3);max-width:
           <details>
             <summary><span class="sig"></span>Implementation notes</summary>
             <ul class="notes">
-              <li>STM32C092 with a TCAN3404-Q1 transceiver and a TPS542025 buck, sized to tuck into the space the harness already had.</li>
+              <li>STM32C092 with a TCAN3404-Q1 transceiver and a TPS54202 buck, sized to tuck into the space the harness already had.</li>
               <li>HAL firmware to sample, scale, and schedule each channel onto the bus at its own rate rather than flooding it. Written, not yet exercised against hardware.</li>
               <li>Analog conditioning — RC filters, dividers, op-amp buffers — simulated in LTspice against the real sensor ranges before layout.</li>
               <li>Where it stopped: the schematic, layout, and firmware are done, but the team's needs moved to LiTel before I took this one through bring-up. The groundwork carried into the 2027 EV platform expansion board.</li>
@@ -535,7 +543,7 @@ footer p{font-family:var(--mono);font-size:0.7rem;color:var(--silk-3);max-width:
       <div class="stop">
         <p class="field">AUG 2026 — DEC 2026</p>
         <h3>Teaching assistant, ENGR 0711</h3>
-        <p class="org">Introduction to Engineering Analysis, University of Pittsburgh</p>
+        <p class="org">Honors Engineering Analysis and Computing, University of Pittsburgh</p>
         <p>Sixty students in C and MATLAB across weekly lab sections and office hours, with written feedback on their code. I wrote Python autograder tooling to speed up the turnaround.</p>
       </div>
       <div class="stop">
@@ -596,7 +604,6 @@ footer p{font-family:var(--mono);font-size:0.7rem;color:var(--silk-3);max-width:
       <h2>Where to reach me</h2>
       <span class="rule"></span>
     </div>
-    <p class="intro">I'm looking for a summer 2027 internship in hardware design or embedded design.</p>
     <div class="links">
       <a href="mailto:brodyjfiorito@gmail.com">
         <span class="what">Email me</span>
@@ -618,7 +625,7 @@ footer p{font-family:var(--mono);font-size:0.7rem;color:var(--silk-3);max-width:
 
 <footer>
   <div class="wrap">
-    <p>BRODY FIORITO · ELECTRICAL ENGINEERING · UNIVERSITY OF PITTSBURGH · REV 2026.09</p>
+    <p>BRODY FIORITO · ELECTRICAL ENGINEERING · UNIVERSITY OF PITTSBURGH · REV 2026.11</p>
   </div>
 </footer>
 
